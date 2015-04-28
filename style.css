@@ -1,0 +1,12 @@
+#rect{
+    width: 200px;
+    height: 150px;
+    outline: 1px solid red;
+    position: relative;
+    margin-left: 0px;
+    margin-left: 50px;
+}
+
+#scaling-handle{
+
+}
