@@ -19,8 +19,15 @@ myApp.directive('scaleTransform', function() {
         //console.log(event.x);
       }};
       var _scaleElement = function(h){
-        var parentPosition = element.getBoundingClientRect();
-        console.log("new Delta x", h.x);
+
+        var computedMarginLeft = parseInt(window.getComputedStyle(element).getPropertyValue("margin-left").replace('px',''));
+
+        console.log(element.offsetLeft + element.offsetWidth);
+        console.log(h.x);
+        var xDelta = ((element.offsetLeft + element.offsetWidth ) - h.x - computedMarginLeft) * -1;
+        var ratio = (element.offsetWidth + xDelta) /  element.offsetWidth;
+        element.style.transformOrigin = "0 0";
+        element.style.transform = "scale(" + ratio + ")";
       };
 
       var handle = document.getElementById("scaling-handle");

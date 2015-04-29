@@ -101,10 +101,13 @@
 
   function getInitialPosition(element) {
     var boundingClientRect = element.getBoundingClientRect();
-    console.log(boundingClientRect.left);
+
+    var computedMarginTop = parseInt(window.getComputedStyle(element.parentElement).getPropertyValue("margin-top").replace('px',''));
+    var computedMarginLeft = parseInt(window.getComputedStyle(element.parentElement).getPropertyValue("margin-left").replace('px',''));
+
     return {
-      top: boundingClientRect.top,
-      left: boundingClientRect.left
+      top: boundingClientRect.top - computedMarginTop,
+      left: boundingClientRect.left - computedMarginLeft
     };
   }
 
